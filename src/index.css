@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+*, *::before, *::after {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+html { overflow-y: scroll; }
+* { scroll-behavior: smooth; }
+
+/* ═══════════════════════════════════════════
+   LIGHT THEME  (default)
+═══════════════════════════════════════════ */
+:root {
+  /* Board sizing – overridden at small breakpoints */
+  --board: 360px;
+  --cell:  120px;
+
+  /* Page background */
+  --bg-page: linear-gradient(145deg, #f7f2e8 0%, #ede6d0 38%, #f2ece0 65%, #f7f4ec 100%);
+  --bg-blob-1: radial-gradient(circle, rgba(232,184,80,0.20) 0%, transparent 66%);
+  --bg-blob-2: radial-gradient(circle, rgba(210,165,70,0.16) 0%, transparent 66%);
+
+  /* Glass cards */
+  --card-bg:         rgba(255,255,255,0.55);
+  --card-bg-solid:   rgba(255,255,255,0.82);
+  --card-bg-board:   rgba(255,255,255,0.80);
+  --card-border:     rgba(255,255,255,0.80);
+  --card-border-solid: rgba(255,255,255,0.90);
+  --card-shadow:     0 16px 48px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.04);
+  --card-shadow-board: 0 24px 64px rgba(0,0,0,0.09), 0 6px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9);
+
+  /* Typography */
+  --text-primary:   #1c1917;
+  --text-secondary: #2d2520;
+  --text-body:      #5a5048;
+  --text-muted:     #7a7060;
+  --text-soft:      #a09080;
+  --text-faint:     #b0a898;
+  --text-lighter:   #c0b8b0;
+
+  /* Symbol colours */
+  --color-x:        #1c1917;
+  --color-o:        #b97a1a;
+
+  /* Board grid lines */
+  --grid-line:      #3d3530;
+
+  /* Separator / divider */
+  --sep:            rgba(0,0,0,0.07);
+
+  /* Inputs */
+  --input-bg:       rgba(255,255,255,0.75);
+  --input-border:   rgba(0,0,0,0.09);
+
+  /* Glass buttons */
+  --btn-glass:         rgba(255,255,255,0.60);
+  --btn-glass-border:  rgba(255,255,255,0.85);
+  --btn-glass-hover:   rgba(255,255,255,0.82);
+  --btn-glass-color:   #5a5048;
+
+  /* Empty-cell hover shimmer */
+  --shimmer-bg:     rgba(232,184,64,0.06);
+  --shimmer-border: rgba(200,160,60,0.30);
+
+  /* Winning cell highlights */
+  --win-x-bg:       rgba(28,25,23,0.07);
+  --win-x-border:   rgba(28,25,23,0.30);
+  --win-o-bg:       rgba(185,122,26,0.10);
+  --win-o-border:   rgba(185,122,26,0.40);
+
+  /* Score rows */
+  --score-x-bg:         rgba(28,25,23,0.06);
+  --score-x-border:     rgba(28,25,23,0.20);
+  --score-inactive-bg:  rgba(255,255,255,0.30);
+  --score-inactive-border: rgba(255,255,255,0.60);
+  --score-sep:          rgba(0,0,0,0.06);
+
+  /* Mode / difficulty selector – inactive state */
+  --mode-inactive-bg:     rgba(255,255,255,0.50);
+  --mode-inactive-border: rgba(0,0,0,0.07);
+  --diff-inactive-bg:     rgba(255,255,255,0.55);
+  --diff-inactive-border: rgba(0,0,0,0.07);
+  --diff-inactive-color:  #9a9080;
+
+  /* Icon buttons */
+  --icon-btn-bg:     rgba(255,255,255,0.55);
+  --icon-btn-border: rgba(255,255,255,0.80);
+  --icon-btn-active: #7a6848;
+  --icon-btn-muted:  #c0b8b0;
+
+  /* AI card (setup screen) */
+  --ai-card-bg:     rgba(185,122,26,0.08);
+  --ai-card-border: rgba(185,122,26,0.22);
+
+  /* Dashboard */
+  --dash-bg:         rgba(251,248,242,0.96);
+  --dash-border:     rgba(255,255,255,0.75);
+  --dash-card-bg:    rgba(255,255,255,0.72);
+  --dash-card-border: rgba(0,0,0,0.07);
+
+  /* Overlay backdrop */
+  --backdrop:        rgba(28,25,23,0.18);
+
+  /* Accent colours (same in both themes) */
+  --accent:          #c9952a;
+  --accent-bright:   #e8b840;
+  --accent-deep:     #b97a1a;
+  --green:           #2d8a4e;
+  --red:             #c04030;
+}
+
+/* ═══════════════════════════════════════════
+   DARK THEME
+═══════════════════════════════════════════ */
+.dark {
+  --bg-page: linear-gradient(145deg, #181410 0%, #201a14 38%, #1a1610 65%, #1e1a14 100%);
+  --bg-blob-1: radial-gradient(circle, rgba(232,184,80,0.10) 0%, transparent 66%);
+  --bg-blob-2: radial-gradient(circle, rgba(210,165,70,0.08) 0%, transparent 66%);
+
+  --card-bg:         rgba(36,30,24,0.80);
+  --card-bg-solid:   rgba(30,25,20,0.96);
+  --card-bg-board:   rgba(38,32,26,0.92);
+  --card-border:     rgba(255,255,255,0.08);
+  --card-border-solid: rgba(255,255,255,0.10);
+  --card-shadow:     0 16px 48px rgba(0,0,0,0.40), 0 4px 16px rgba(0,0,0,0.25);
+  --card-shadow-board: 0 24px 64px rgba(0,0,0,0.45), 0 6px 20px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.05);
+
+  --text-primary:   #f0ebe3;
+  --text-secondary: #e8e0d5;
+  --text-body:      #c8bfb5;
+  --text-muted:     #9a9080;
+  --text-soft:      #7a7268;
+  --text-faint:     #625a52;
+  --text-lighter:   #4a4440;
+
+  --color-x:        #f0ebe3;
+  --color-o:        #e8b840;
+
+  --grid-line:      #6a6258;
+
+  --sep:            rgba(255,255,255,0.08);
+
+  --input-bg:       rgba(46,38,30,0.85);
+  --input-border:   rgba(255,255,255,0.10);
+
+  --btn-glass:         rgba(38,32,26,0.75);
+  --btn-glass-border:  rgba(255,255,255,0.12);
+  --btn-glass-hover:   rgba(50,42,34,0.92);
+  --btn-glass-color:   #c8bfb5;
+
+  --shimmer-bg:     rgba(232,184,64,0.08);
+  --shimmer-border: rgba(200,160,60,0.22);
+
+  --win-x-bg:       rgba(240,235,227,0.07);
+  --win-x-border:   rgba(240,235,227,0.20);
+  --win-o-bg:       rgba(232,184,64,0.10);
+  --win-o-border:   rgba(232,184,64,0.35);
+
+  --score-x-bg:         rgba(240,235,227,0.07);
+  --score-x-border:     rgba(240,235,227,0.18);
+  --score-inactive-bg:  rgba(36,30,24,0.65);
+  --score-inactive-border: rgba(255,255,255,0.08);
+  --score-sep:          rgba(255,255,255,0.07);
+
+  --mode-inactive-bg:     rgba(38,32,26,0.65);
+  --mode-inactive-border: rgba(255,255,255,0.08);
+  --diff-inactive-bg:     rgba(38,32,26,0.60);
+  --diff-inactive-border: rgba(255,255,255,0.08);
+  --diff-inactive-color:  #6a6258;
+
+  --icon-btn-bg:     rgba(38,32,26,0.80);
+  --icon-btn-border: rgba(255,255,255,0.10);
+  --icon-btn-active: #c9952a;
+  --icon-btn-muted:  #4a4440;
+
+  --ai-card-bg:     rgba(185,122,26,0.12);
+  --ai-card-border: rgba(185,122,26,0.28);
+
+  --dash-bg:         rgba(24,20,16,0.98);
+  --dash-border:     rgba(255,255,255,0.08);
+  --dash-card-bg:    rgba(36,30,24,0.90);
+  --dash-card-border: rgba(255,255,255,0.08);
+
+  --backdrop:        rgba(0,0,0,0.60);
+
+  --green:           #3da860;
+  --red:             #d04840;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE BOARD SIZES
+═══════════════════════════════════════════ */
+@media (max-width: 500px) {
+  :root {
+    --board: 288px;
+    --cell:  96px;
+  }
+}
+@media (max-width: 380px) {
+  :root {
+    --board: 255px;
+    --cell:  85px;
+  }
+}
